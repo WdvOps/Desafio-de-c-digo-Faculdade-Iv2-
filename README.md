@@ -1,9 +1,11 @@
+https://unicode.org/emoji/charts/full-emoji-list.html
+
 ## Desafio-de-codigo-Faculdade-Iv2- LEVEL - 04
 
 
 
 # Calculando gastos de combustível
-Vamos construir uma pequena aplicação web que faz o cálculo de gastos com combustível de acordo com as informações inseridas por um usuário, aqui vamos por em prática muito do que aprendemos até agora, será um projetinho bem bacana de construir e com muito aprendizado para aproveitar, o mais bacana de tudo é poder ver as coisas fazendo sentido e se encaixando, iremos usar coisas que ainda não vimos, ou seja, novos aprendizados para sua mochila do conhecimento.
+Construimos uma pequena aplicação web que faz o cálculo de gastos com combustível de acordo com as informações inseridas por um usuário, colocamos em prática muito do que aprendemos até agora, funções, métodos de manipulação de strings, arrays e etc.
 
 Como vai funcionar:
 
@@ -22,3 +24,30 @@ Ao descartar os inputs serão "limpados" e o cursor será focado no primeiro inp
 Ao salvar, o calculo em questão vai parar em uma lista de cálculos salvos, esses são exibidos quando o usuário clica em "Ver histórico", no menu da aplicação, cada linha deve ter um botão para excluir o item em questão, uma lixeirinha que ficará na coluna "Ação".
 Faça com que os modais apareçam e sumam nos momentos convenientes para tal.
 Faça com que os modais sumam quando o usuário clicar fora do modal, na parte escura.
+
+
+## Code-challenge-College-Iv2- LEVEL - 04
+
+# Calculating fuel costs
+We built a small web application that calculates fuel costs according to the information entered by a user, we put into practice much of what we've learned so far, functions, string manipulation methods, arrays and so on.
+
+How will it work:
+
+The user informs the following:
+What is the average (km/l) that the car makes
+What is the current price of gasoline
+how many kilometers per day do you walk
+How many days a week do you travel the distance informed with the car
+The application performs the calculation and displays a modal containing the following:
+daily expense
+weekly expense
+monthly expense
+annual expense
+Given the result, the user has 2 options: save this calculation in a history or just discard and start a new calculation
+When discarding inputs they will be "cleared" and the cursor will be focused on the first input
+When saving, the calculation in question will end up in a list of saved calculations, these are displayed when the user clicks "View history" in the application menu, each line must have a button to delete the item in question, a trash can that will be in the "Action" column.
+Make modals appear and disappear at convenient times.
+Make the modals disappear when the user clicks outside the modal, in the dark part.
+
+
+![TeamCity Coverage](https://img.shields.io/teamcity/coverage/JavaScript?server=https%3A%2F%2Fdeveloper.mozilla.org%2Fpt-BR%2Fdocs%2FWeb%2FJavaScript&style=social)
