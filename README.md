@@ -49,5 +49,9 @@ When saving, the calculation in question will end up in a list of saved calculat
 Make modals appear and disappear at convenient times.
 Make the modals disappear when the user clicks outside the modal, in the dark part.
 
+<br> <br>
 
-![TeamCity Coverage](https://img.shields.io/teamcity/coverage/JavaScript?server=https%3A%2F%2Fdeveloper.mozilla.org%2Fpt-BR%2Fdocs%2FWeb%2FJavaScript&style=social)
+
+<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60"/> </a>  <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="60" height="60"/> </a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="60" height="60"/> </a>
+</p>
