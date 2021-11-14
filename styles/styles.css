@@ -215,3 +215,25 @@ th, td {
     cursor: pointer;
     color: tomato;
 }
+
+.github {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    margin-top: 7rem; 
+    color: #4A5568;
+}
+.github a {
+    color: #4A5568;
+    font-size: 3.6rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.github a:hover {
+    font-size: 4.9rem;
+    color: #ffffff;
+    filter: brightness(0.9);
+}
