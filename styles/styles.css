@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*, input, button {
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    font-size: 62.5%;  
+    background-color: #A0AEC0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+header {
+    padding: 1.6rem;
+    margin: auto;
+    text-align: right;
+    background-color: #414141;
+    margin-bottom: 2.4rem;
+    box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
+}
+
+header span {
+    font-size: 2rem;
+    margin: auto;
+    margin-right: 2em;
+    width: auto;
+    color: #f0f0f0;
+    
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+span:hover {
+    color: white;
+    border-bottom: 1px solid #FFF;
+}
+
+h3 {
+    text-align: left;
+    font-size: 2.8rem;
+    width: 45%;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+form {
+    background-color: #666565;
+    width: max-content;
+    margin: auto;
+    margin-top: 1.8rem;
+    padding: 3.2rem;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 38px 2px rgba(0, 0, 0, 0.425);
+    
+}
+
+form .input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3.2rem;
+}
+
+form .input label {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+form .input input {    
+    padding: 0.8rem;
+    border: 0;
+    border-radius: 0.4rem;
+    font-size: 2.2rem;
+}
+
+form div button {
+    width: 100%;
+    border: 0;
+    font-size: 2.4rem;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    background-color: #2B6CB0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+form div button:hover {
+    filter: brightness(0.95);
+    box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
+}
+
+/* Modais que mostram informações */
+#fundo-modal {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.856);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+}
+
+#resultado, #historico{
+    display: none;
+    width: 70%;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    background-color: #e4e4e4;
+    padding: 2.4rem;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
+}
+
+
+#resultado #acoes,
+#historico #acoes {
+    width: 80%;
+    margin: auto;
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#resultado #acoes button,
+#historico #acoes button {
+    cursor: pointer;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 0.4rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 45%;
+}
+
+#resultado #acoes #salvar {
+    background-color: #2B6CB0;
+    margin-bottom: 0.8rem;
+}
+
+#resultado #acoes #descartar {
+    background-color: #f3ff47;
+    margin-bottom: 0.8rem;
+}
+
+#resultado #acoes button:hover,
+#historico #acoes button:hover,
+#zero-registros button:hover {
+    filter: brightness(0.9);
+    box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
+}
+
+#historico #acoes button {
+    background-color: #f3ff47;
+}
+
+#historico #acoes #excluir-registros {
+    background-color: rgba(253, 92, 63, 0.753);
+}
+
+table {
+    /* border-collapse: collapse; */
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 0.5px solid #e4e4e4;
+    padding: 4px 16px;
+    text-align: center;
+}
+
+#zero-registros {
+    display: none;
+    width: 70%;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    background-color: #fff;
+    padding: 2.4rem;
+    border-radius: 0.4rem;
+}
+
+#zero-registros p {
+    font-size: 3.2rem;
+    text-align: center;
+}
+#zero-registros button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 5em;
+    padding: 0.8rem;
+    text-align: center;
+    float: right;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    background-color: tomato;
+}
+
+.excluir-item {
+    cursor: pointer;
+    color: tomato;
+}
