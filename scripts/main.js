@@ -1,3 +1,6 @@
+'use strict'
+
+
 //------------ DECLARAÇÃO DE VARIÁVEI GLOBAIS ------------//
 
 // REFERENCIA FORMU8LARIO
@@ -19,7 +22,7 @@ let usoKmDia = document.getElementById('quilometros_dia');
 let diasSemana = document.getElementById('dias_semana');
 
 // ARRAY DE OBJETOS
-let gastosArray = [];
+let gastosArray = JSON.parse(localStorage.getItem('Historico')) || [];
 
 // VARIÁVEIS QUE RECEBERÃO OS VALORES CALCULADOS
 let gastoDiario;
@@ -29,6 +32,7 @@ let gastoAnual;
 //------------- FIM DA DECLARAÇÃO DE VARIÁVEI GLOBAIS ------------//
 
 //--------------FUNÇÕES------------//
+
 
 // FUNÇÃO QUE LIMPA OS CAMPOS DO FORMULARIO
 function limpaCampos() {
@@ -41,13 +45,15 @@ function limpaCampos() {
 }
 
 // VALIDAÇÃO DOS CAMPOS 
+
 function validaCampos() {
 
     if (mediaKm.value == '') {
         alert('Você precisa informar a media de km/L')
         document.getElementById('media').focus();
+
     } else if (precoComb.value == '') {
-        alert('Você precisa informar o preço atual do combustível')
+        alert('Você precisa informar o preço atual do combustível');
         document.getElementById('preco').focus();
 
     } else if (usoKmDia.value == '') {
@@ -77,32 +83,25 @@ function geraTabelaRes() {
     let table = document.querySelector('#tableRC');
     table.innerHTML = '';
     table.innerHTML += `
-            <tr>
-                <td>R$ ${gastoDiario}</td>
-                <td>R$ ${gastoSemanal}</td>
-                <td>R$ ${gastoMensal}</td>
-                <td>R$ ${gastoAnual}</td>
-            </tr>
+    <tr>
+    <td>R$ ${gastoDiario}</td>
+    <td>R$ ${gastoSemanal}</td>
+    <td>R$ ${gastoMensal}</td>
+    <td>R$ ${gastoAnual}</td>
+    </tr>
     `
 }
 
-// FUNÇAO PARA FORMATAÇÃO DA DATA ATUAL
-let formatDate = () => {
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    let currentDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`
-    return currentDate;
-};
 
-// CONSTRÓI ARRAY DE OBJETOS
-function listaGastos() {
-    const Gastos = {
-        Data: formatDate(),
+// CONSTRÓI ARRAY DE OBJETOS E FORMATA A DATA PARA O PADRÃO BRASILEIRO
+function listaGastos(date, Gastos) {
+    date = new Intl
+        .DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' })
+        .format(date);
+    console.log(date)
+
+    Gastos = {
+        Data: date,
         PrecoCombustivel: Number(preco.value.replace(',', '.')).toFixed(2),
         MediaKmL: Number(media.value).toFixed(2),
         GastoDiario: Number(gastoDiario).toFixed(2),
@@ -117,52 +116,33 @@ function listaGastos() {
 }
 
 // GERA TABELA DO HISTÓRICO
-function geraTabelaHist(tableH, array) {
-    // Inicia o contador do index para posicionamento do botão de ações
-    let index = 0;
+function generateTable() {
 
-    //Faz a busca pelos objetos dentro do array
-    for (let elementos of array) {
+    tableH.innerHTML = '';
 
-        //Insere as respectivas linhas da tabela 
-        let row = tableH.insertRow();
+    gastosArray.forEach((element, index) => {
 
-        //Faz a busca pelas chaves dos objetos encontrados no array
-        for (let key in elementos) {
+        const trowHist = document.createElement('tr');
+        tableH.appendChild(trowHist);
+        trowHist.innerHTML += `
+        <td id="data">${gastosArray[index].Data}</td>
+        <td id="data">R$ ${gastosArray[index].PrecoCombustivel}</td>
+        <td id="data">${gastosArray[index].MediaKmL} km/L</td>
+        <td id="data">R$ ${gastosArray[index].GastoDiario}</td>
+        <td id="data">R$ ${gastosArray[index].GastoSemanal}</td>
+        <td id="data">R$ ${gastosArray[index].GastoMensal}</td>
+        <td id="data">R$ ${gastosArray[index].GastoAnual}</td>
+        <td id="data"><span class="material-icons" id="delete-item" onclick="deleteItem(${index})">
+        delete
+        </span></td>
+        `;
 
-            //Insere as respectivas células nas linhas da tabela
-            let cell = row.insertCell()
-
-            //Cria um nó de texto para inserção dos dados encontrados nos elementos em suas respectivas colunas(keys)
-            let texto = document.createTextNode(elementos[key]);
-
-            //Insere as propriedades dos objetos nas células da tabela HTML
-            cell.appendChild(texto);
-
-            //Verifica a existência da chave ações dentro do objeto ecaso true, faz a insersão do ícone de deleção de itens
-            if (key == 'Acao') {
-
-                //Atribui a classe excluir-item ao ícone de deleção de items
-                cell.setAttribute('class', 'excluir-item')
-
-                //Injeta o ícone na respectiva célula da tabela HTML
-                cell.innerHTML = insereIcone(index)
-            }
-        }
-
-        //Faz o incremento de loocalização de cada posição de objeto no array
-        index++
-    }
-
+    });
+    saveData(gastosArray)
     //Invoca a função de limpeza dos campos do formulario
     limpaCampos()
 }
 
-// INSERE ÍCONE DE DELEÇÃO NAS LINHAS DA COLUNA DE AÇÃO NA TABELA DO HISTÓRICO
-function insereIcone(index) {
-    let deleteIcon = ' <span class="material-icons" onclick = "deleteItem(' + index + ')">delete</span>'
-    return deleteIcon;
-}
 
 // ABRE MODAL RESULTADO
 function showModalRes() {
@@ -206,18 +186,19 @@ function closeModalRes() {
 
 // DELETA TODOS OS DADOS DO HISTÓRICO
 function deleteAll() {
-    document.getElementById('tableHist');
+
     gastosArray = [];
     document.getElementById('tableHist').innerHTML = '';
+    localStorage.removeItem('Historico')
     modalRegisVazio()
 }
+
 
 // DELETA LINHAS ESPECÍCAS DO HISTÓRORICO
 //VINCULADO AO ÍCONE "DELETE" NAS LINHAS DA TABELA NA COLUNA DE ACÕES
 function deleteItem(index) {
-
-    //Remove a linha específica onde cada ícone de deleção se encontra n atabela do histórico
-    gastosArray.splice(index, 1)
+    console.log('Entrei na função delete Item')
+    document.getElementById('tableHist').innerHTML = '';
 
     // Faz uma verificação pelo conteúdo da tabela do histórico e a condição seja true após a exclusão de um item
     // faz a limpeza da tabela fecha o modal do histórico e retorna o modal de registros vazios 
@@ -228,8 +209,12 @@ function deleteItem(index) {
     } else {
         //e caso false, reseta e evoca o modal da tabela do histórico atualizada
         document.getElementById('tableHist').innerHTML = '';
-        geraTabelaHist(tableH, gastosArray);
+        //Remove a linha específica onde cada ícone de deleção se encontra n atabela do histórico
+        gastosArray.splice(index, 1)
+
+        generateTable();
     }
+    console.log(localStorage.getItem('Historico', index))
 }
 
 // Mostra o modal de registros vazios
@@ -251,6 +236,13 @@ function closeModalRegisVazio() {
     document.getElementById('media').focus();
 
 }
+
+
+
+// Salva os dados no LocalStorage
+function saveData(obj) {
+    localStorage.setItem("Historico", JSON.stringify(obj));
+}
 //------------- FIM DAS FUNÇÕES ------------//
 
 
@@ -269,16 +261,15 @@ document.getElementById('btn_calcula').addEventListener('click', function (event
 document.getElementById('salvar').addEventListener('click', function (evento) {
     evento.preventDefault();
     listaGastos();
-    document.getElementById('tableHist').innerHTML = '';
-    geraTabelaHist(tableH, gastosArray);
+    saveData(gastosArray)
     closeModalRes();
-    limpaCampos()
+    limpaCampos();
 })
 
 // ASSISTE A CHAMADA DA FUNÇÃO DE MOSTRAR HISTÓRICO
 document.getElementById('ver-historico').addEventListener('click', function (evento) {
     evento.preventDefault();
-
+    generateTable()
     showModalHist();
 })
 
@@ -310,6 +301,7 @@ document.getElementById('closeModalRegVazio').addEventListener('click', function
     closeModalRegisVazio()
 })
 //------------FIM DAS INSTRUÇÕES ------------//
+
 
 
 

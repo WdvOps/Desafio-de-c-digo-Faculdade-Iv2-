@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-*, input, button {
-    font-family: 'Roboto', sans-serif;
-}
-
-html {
-    font-size: 62.5%;  
-    background-color: #A0AEC0;
+:root {
+    --btn-primary: #0353A4;
+    --btn-secondary: #FDCA40;
+    --btn-del: #DF2935;
 }
 
 * {
@@ -16,13 +13,68 @@ html {
     outline: 0;
 }
 
-header {
-    padding: 1.6rem;
+*, input, button {
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    width: 100vw;
+    height: 100vh;
+    font-size: 62.5%;  
+    background-image: url(/image/image.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+body {
+   min-height: 100vh;
+   min-width: 100vw;
+}
+
+main {
+   width: 50vw;
+   height: 80vh; 
+   margin: auto;
+   text-align: center;
+}
+.headline {
+    background: rgba(119, 136, 153, 0.692);
+    width: 60%;
+    margin: auto;   
+}
+
+.headline h3 {
+    text-align: left;
+    font-size: 2.2rem;
+    width: 100%;
     margin: auto;
-    text-align: right;
-    background-color: #414141;
+    padding: 1.2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.header {
+    padding: 1.6rem;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #5C677D;
     margin-bottom: 2.4rem;
     box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
+}
+
+.title {
+    width: 60%;
+    margin-left: 3rem;
+    display: flex;
+    justify-content: space-between;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    text-shadow: 4px 4px 6px rgba(36, 35, 35, 0.87);
 }
 
 header span {
@@ -35,60 +87,73 @@ header span {
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
+    text-shadow: 4px 4px 6px rgba(36, 35, 35, 0.87);
+    transition: ease-out .3s;
 }
 
 span:hover {
-    color: white;
-    border-bottom: 1px solid #FFF;
-}
-
-h3 {
-    text-align: left;
-    font-size: 2.8rem;
-    width: 45%;
-    margin: auto;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    filter: brightness(3);
+    color: rgb(201, 201, 201);
+    border-bottom: 1px solid rgb(175, 175, 175);
 }
 
 form {
-    background-color: #666565;
-    width: max-content;
+    background-color: #5C677D;
+    width: 90%;
     margin: auto;
     margin-top: 1.8rem;
     padding: 3.2rem;
     border-radius: 0.4rem;
-    box-shadow: 1px 1px 38px 2px rgba(0, 0, 0, 0.425);
-    
+    box-shadow: 1px 1px 38px 2px rgba(0, 0, 0, 0.425);    
 }
 
 form .input {
+    width: 65%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     margin-bottom: 3.2rem;
 }
 
 form .input label {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
 
-form .input input {    
-    padding: 0.8rem;
+form .input input {   
+    width: 40%; 
+    margin: auto;
+    text-align: center;
+    padding: 0.6rem;
     border: 0;
     border-radius: 0.4rem;
     font-size: 2.2rem;
 }
+.input input::placeholder {   
+   font-size: 1.5rem;
+   text-align: left;
+   color: red;
+}
+
+.input input::focus {
+    text-align: left;
+}
+
+.btn-Calc {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
 
 form div button {
-    width: 100%;
+    width: 55%;
     border: 0;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     padding: 0.8rem;
     border-radius: 0.4rem;
     font-weight: bold;
-    background-color: #2B6CB0;
+    background-color: var(--btn-primary);
     cursor: pointer;
     transition: .3s;
 }
@@ -104,7 +169,7 @@ form div button:hover {
     visibility: hidden;
     position: absolute;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.856);
+    background-color: #ffffffe8;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -119,8 +184,9 @@ form div button:hover {
     position: absolute;
     top: 10%;
     left: 15%;
-    background-color: #e4e4e4;
-    padding: 2.4rem;
+    background-color: #555C66;
+    padding-bottom: 2.4rem;
+    padding-top: 1rem;
     border-radius: 0.4rem;
     box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.425);
 }
@@ -143,7 +209,7 @@ form div button:hover {
     border-radius: 0.4rem;
     font-size: 1.8rem;
     font-weight: bold;
-    width: 45%;
+    width: 30%;
 }
 
 #resultado #acoes #salvar {
@@ -152,7 +218,7 @@ form div button:hover {
 }
 
 #resultado #acoes #descartar {
-    background-color: #f3ff47;
+    background-color: var(--btn-secondary);
     margin-bottom: 0.8rem;
 }
 
@@ -164,24 +230,56 @@ form div button:hover {
 }
 
 #historico #acoes button {
-    background-color: #f3ff47;
+    background-color: var(--btn-secondary);
 }
 
 #historico #acoes #excluir-registros {
-    background-color: rgba(253, 92, 63, 0.753);
+    background-color: var(--btn-del);
 }
 
-table {
-    /* border-collapse: collapse; */
-    font-size: 1.6rem;
-    width: 100%;
+#conteudo-modal {
+    display: flex;
+    margin: auto;
 }
 
-th, td {
-    border-bottom: 0.5px solid #e4e4e4;
-    padding: 4px 16px;
+.htable {
+    font-size: 1.5rem;
+    width: 96%;
+    margin: auto;
     text-align: center;
 }
+
+.htable thead {
+    background: #000;
+    color: #e4e4e4;
+    text-transform: uppercase;
+}
+.htable thead th{
+    background: #000;
+    color: #e4e4e4;
+    padding: 2rem;
+}
+
+.htable tbody tr:nth-child(2n) {
+    background: rgb(39, 39, 39);
+    color: #000;
+}
+
+
+td {   
+    padding: 4px 16px;
+    text-align: center;
+    color: #e4e4e4;
+}
+
+#data{
+transition: .3s ease-in;
+}
+#data:hover {
+    color: #050607;
+    background-color: #c4c4c4e3;
+}
+
 
 #zero-registros {
     display: none;
@@ -208,12 +306,18 @@ th, td {
     border-radius: 4px;
     border: 0;
     cursor: pointer;
-    background-color: tomato;
+    background-color: var(--btn-del);
 }
 
-.excluir-item {
+#delete-item {
     cursor: pointer;
-    color: tomato;
+    color: var(--btn-del);
+    transition: .3s ease-in;
+}
+#delete-item:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: rgba(255, 39, 1, 0.945);
 }
 
 .github {
@@ -222,18 +326,96 @@ th, td {
     flex-direction: column;
     margin: auto;
     text-align: center;
-    margin-top: 7rem; 
+    margin-top: 1.5rem; 
     color: #4A5568;
 }
 .github a {
-    color: #4A5568;
+    color: #677792;
     font-size: 3.6rem;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
 }
 
 .github a:hover {
     font-size: 4.9rem;
     color: #ffffff;
     filter: brightness(0.9);
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 640px)  {
+
+    .header, .title{
+        display: flex;
+        flex-direction: column;
+    }
+    span {
+        margin-right: 2rem;
+    }
+
+    form {
+        width: 100%;
+        margin: auto;
+    }
+    #resultado, #historico {
+        top: 26%;
+        margin: auto;
+    }
+    #conteudo-modal {
+       width: 93%;
+       margin-top: 4rem;
+    }
+
+    .htable thead {
+        display: none;
+    }
+
+    .htable tbody td {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (min-width: 640px) and (max-width: 1000px)  {
+    .header, .title{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    span {
+        margin-right: 4em;
+    }
+
+    form {
+        width: 100%;
+        margin: auto;
+    }
+    #resultado, #historico {
+        top: 26%;
+        margin: auto;
+    }
+    #conteudo-modal {
+       width: 93%;
+       margin-top: 4rem;
+    }
+
+    .htable thead {
+        display: none;
+    }
+
+    .htable tbody td {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+    #resultado, #historico {
+        width: 90%;
+        margin: auto;
+    }
+    #conteudo-modal {
+       width: 90%;
+       margin: auto;
+       margin-right: 2rem;
+    }
 }

@@ -14,51 +14,64 @@
 <body>
 
     <header>
-        <span id="ver-historico">Ver histórico</span>
+        <div class="header">
+            <div class="title">
+                <h2>e-Will</h2>
+                <h1>Cálculo de gastos com combustível</h1>
+            </div>
+            <span id="ver-historico">Ver histórico</span>
+        </div>
     </header>
+    <main>
 
-    <h3>
-        Insira algumas informações e saiba quanto você gasta com o combustível do seu carro ou moto ;)
-    </h3>
-
-    <form name="dados">
-        <div class="input">
-            <label for="media">
-                Quantos km/l seu carro ou moto faz?
-            </label>
-            <input type="text" name="media" id="media" required>
-        </div>
-        <div class="input">
-            <label for="preco">
-                Qual o preço atual da gasolina no posto que você abastece?
-            </label>
-            <input type="text" name="preco" id="preco" required>
-        </div>
-        <div class="input">
-            <label for="quilometros_dia">
-                Quantos km por dia você percorre?
-            </label>
-            <input type="text" name="quilometros_dia" id="quilometros_dia" required>
-        </div>
-        <div class="input">
-            <label for="dias_semana">
-                Quantos dias da semana você anda com o carro ou moto?
-            </label>
-            <input type="text" name="dias_semana" id="dias_semana" required>
+        <div class="headline">
+            <h3>
+                Insira algumas informações e saiba quanto você gasta com o combustível do seu veículo ;)
+            </h3>
         </div>
 
-        <div>
-            <button id="btn_calcula">
-                Calcular
-            </button>
-        </div>
-    </form>
+
+        <form name="dados">
+            <div class="input">
+                <label for="media" id="label-Media">
+                    Quantos km/l seu carro ou moto faz?
+                </label>
+                <input type="text" name="media" id="media" required>
+            </div>
+            <div class="input">
+                <label for="preco">
+                    Qual o preço atual da gasolina no posto que você abastece?
+                </label>
+                <input type="text" name="preco" id="preco" required>
+            </div>
+            <div class="input">
+                <label for="quilometros_dia">
+                    Quantos km por dia você percorre?
+                </label>
+                <input type="text" name="quilometros_dia" id="quilometros_dia" required>
+            </div>
+            <div class="input">
+                <label for="dias_semana">
+                    Quantos dias da semana você anda com o seu veículo?
+                </label>
+                <input type="text" name="dias_semana" id="dias_semana" required>
+            </div>
+
+
+            <div class="btn-Calc">
+                <button id="btn_calcula">
+                    Calcular
+                </button>
+            </div>
+        </form>
+
+    </main>
 
     <div id="fundo-modal"></div>
 
     <div id="resultado">
         <div id="conteudo-modal">
-            <table>
+            <table class="htable">
                 <thead>
                     <tr>
                         <th>Gasto diário</th>
@@ -82,11 +95,11 @@
 
     <div id="historico">
         <div id="conteudo-modal">
-            <table>
+            <table class="htable">
                 <thead>
                     <tr>
                         <th>Data</th>
-                        <th>Preço gasolina</th>
+                        <th>Preço Do combustível</th>
                         <th>Média km/l</th>
                         <th>Gasto diário</th>
                         <th>Gasto semanal</th>
